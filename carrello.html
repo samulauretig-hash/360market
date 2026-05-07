@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carrello</title>
+</head>
+
+<body style="font-family: Arial; text-align:center;">
+
+<h1 style="color: orange;">Carrello</h1>
+
+<hr>
+
+<a href="index.html">Home</a> |
+<a href="prodotti.html">Prodotti</a>
+
+<hr>
+
+<h3>I tuoi prodotti:</h3>
+<ul id="lista"></ul>
+
+<button onclick="svuota()">Svuota carrello</button>
+
+<script>
+let lista = document.getElementById("lista");
+let carrello = JSON.parse(localStorage.getItem("carrello"));
+
+if (carrello != null) {
+  carrello.forEach(function(p) {
+    let li = document.createElement("li");
+    li.textContent = p;
+    lista.appendChild(li);
+  });
+}
+
+function svuota() {
+  localStorage.removeItem("carrello");
+  location.reload();
+}
+</script>
+
+</body>
+</html>

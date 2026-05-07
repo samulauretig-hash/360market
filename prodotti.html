@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prodotti</title>
+</head>
+
+<body style="font-family: Arial; text-align:center;">
+
+<h1 style="color: green;">Prodotti</h1>
+
+<hr>
+
+<a href="index.html">Home</a> |
+<a href="carrello.html">Carrello</a>
+
+<hr>
+
+<h3>Pasta - €1.20</h3>
+<img src="pasta.jpg" width="150"><br>
+<button onclick="aggiungi('Pasta')">Aggiungi al carrello</button>
+
+<br><br>
+
+<h3>Latte - €1.50</h3>
+<img src="latte.jpg" width="150"><br>
+<button onclick="aggiungi('Latte')">Aggiungi al carrello</button>
+
+<br><br>
+
+<h3>Coca Cola - €2.00</h3>
+<img src="coca.jpg" width="150"><br>
+<button onclick="aggiungi('Coca Cola')">Aggiungi al carrello</button>
+
+<script>
+function aggiungi(prodotto) {
+  let carrello = localStorage.getItem("carrello");
+
+  if (carrello == null) {
+    carrello = [];
+  } else {
+    carrello = JSON.parse(carrello);
+  }
+
+  carrello.push(prodotto);
+  localStorage.setItem("carrello", JSON.stringify(carrello));
+
+  alert(prodotto + " aggiunto al carrello!");
+}
+</script>
+
+</body>
+</html>
